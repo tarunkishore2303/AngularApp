@@ -16,6 +16,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule, MatCheckbox } from '@angular/material/checkbox';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import 'hammerjs';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -70,6 +71,7 @@ import { BaseURL } from './shared/Baseurl';
     MatSelectModule,
     MatSlideToggleModule,
     HttpClientModule,
+    MatProgressSpinnerModule,
   ],
   entryComponents: [LoginComponent],
   providers: [DishService, { provide: 'BaseURL', useValue: BaseURL }],

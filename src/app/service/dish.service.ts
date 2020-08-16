@@ -1,11 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Dish } from '../shared/Dish';
-import { DISHES } from '../shared/dishes';
 import { map } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { BaseURL } from '../shared/Baseurl';
-import { from, Observable } from 'rxjs';
-
+import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
