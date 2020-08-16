@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -35,6 +35,7 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
 import { ContactComponent } from './contact/contact.component';
 import { AboutusComponent } from './aboutus/aboutus.component';
 import { LoginComponent } from './login/login.component';
+import { BaseURL } from './shared/Baseurl';
 
 @NgModule({
   declarations: [
@@ -68,9 +69,10 @@ import { LoginComponent } from './login/login.component';
     ReactiveFormsModule,
     MatSelectModule,
     MatSlideToggleModule,
+    HttpClientModule,
   ],
   entryComponents: [LoginComponent],
-  providers: [DishService],
+  providers: [DishService, { provide: 'BaseURL', useValue: BaseURL }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
