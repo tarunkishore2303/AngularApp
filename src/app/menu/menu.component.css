@@ -1,0 +1,10 @@
+.mat-list-base .mat-list-item {
+  color: #000000;
+}
+
+h3 {
+  font-weight: 700;
+  font-size: 20px;
+  justify-content: center;
+  margin-top: 10px;
+}

@@ -1,0 +1,33 @@
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+  color: black !important;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.container {
+  display: flex;
+  margin: 0px;
+}
+
+.background-primary {
+  background-color: #512da8 !important;
+}
+.background-accent {
+  background-color: #ffc107 !important;
+}
+.text-floral-white {
+  color: floralwhite !important;
+}
+.flex-spacer {
+  flex: 1 1 auto;
+}
+
+/* .feedback-form {
+  background-color: #000000;
+} */
