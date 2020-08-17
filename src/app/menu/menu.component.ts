@@ -10,6 +10,7 @@ import { BaseURL } from '../shared/Baseurl';
 })
 export class MenuComponent implements OnInit {
   dishes: Dish[];
+  errMess: string;
   selectedDish: Dish;
   constructor(
     private dishService: DishService,
@@ -17,7 +18,10 @@ export class MenuComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.dishService.getDishes().subscribe((dishes) => (this.dishes = dishes));
+    this.dishService.getDishes().subscribe(
+      (dishes) => (this.dishes = dishes),
+      (errMess) => (this.errMess = <any>this.errMess)
+    );
   }
 
   onSelect(dish: Dish) {

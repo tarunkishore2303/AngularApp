@@ -31,6 +31,7 @@ import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 
 import { DishService } from './service/dish.service';
+import { ProcessHTTPmsgService } from './service/process-httpmsg.service';
 
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { ContactComponent } from './contact/contact.component';
@@ -74,7 +75,11 @@ import { BaseURL } from './shared/Baseurl';
     MatProgressSpinnerModule,
   ],
   entryComponents: [LoginComponent],
-  providers: [DishService, { provide: 'BaseURL', useValue: BaseURL }],
+  providers: [
+    DishService,
+    { provide: 'BaseURL', useValue: BaseURL },
+    ProcessHTTPmsgService,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
