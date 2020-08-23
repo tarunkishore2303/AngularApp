@@ -1,9 +1,11 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, ViewChild } from '@angular/core';
 import { Params, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
+import { Comment } from '../shared/comment';
 import { Dish } from '../shared/Dish';
 import { DishService } from '../service/dish.service';
 import { switchMap } from 'rxjs/operators';
+import { FormBuilder, FormGroup, Validators, Form } from '@angular/forms';
 
 @Component({
   selector: 'app-dishdetail',
@@ -16,13 +18,22 @@ export class DishdetailComponent implements OnInit {
   prev: string;
   next: string;
   errMess: string;
+  dishCopy: Dish;
+  comment: Comment;
+  commentForm: FormGroup;
+  newComment: Comment;
+  @ViewChild('cform') CommentformDirective;
 
   constructor(
     private dishservice: DishService,
     private route: ActivatedRoute,
     private location: Location,
-    @Inject('BaseURL') public BaseURL
-  ) {}
+    private fb: FormBuilder,
+    @Inject('BaseURL')
+    public BaseURL
+  ) {
+    this.createForm();
+  }
 
   ngOnInit() {
     this.dishservice
@@ -35,10 +46,45 @@ export class DishdetailComponent implements OnInit {
       .subscribe(
         (dish) => {
           this.dish = dish;
+          this.dishCopy = dish;
           this.setPrevNext(dish.id);
         },
         (errMess) => (this.errMess = <any>errMess)
       );
+  }
+
+  createForm() {
+    this.commentForm = this.fb.group({
+      author: '',
+      rating: 1,
+      comment: '',
+    });
+  }
+
+  onSubmit() {
+    console.log('Submit triggered');
+    this.comment = this.commentForm.value;
+    this.comment.date = new Date().toISOString(); // it seems that method .toISOString doesn't exist
+    this.dishCopy.comments.push(this.comment);
+    this.dishservice.putDish(this.dishCopy).subscribe(
+      (dish) => {
+        this.dish = dish;
+        this.dishCopy = dish;
+      },
+      (errMess) => {
+        this.dish = null;
+        this.dishCopy = null;
+        this.errMess = <any>errMess;
+      }
+    );
+    this.commentForm.reset({
+      author: '',
+      rating: 5,
+      comment: '',
+      date: '',
+    });
+
+    this.CommentformDirective.resetForm();
   }
 
   setPrevNext(dishId: string) {

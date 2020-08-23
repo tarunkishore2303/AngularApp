@@ -17,6 +17,7 @@ import { MatCheckboxModule, MatCheckbox } from '@angular/material/checkbox';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSliderModule } from '@angular/material/slider';
 import 'hammerjs';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -38,6 +39,7 @@ import { ContactComponent } from './contact/contact.component';
 import { AboutusComponent } from './aboutus/aboutus.component';
 import { LoginComponent } from './login/login.component';
 import { BaseURL } from './shared/Baseurl';
+import { CommentformDirective } from './commentform.directive';
 
 @NgModule({
   declarations: [
@@ -51,6 +53,7 @@ import { BaseURL } from './shared/Baseurl';
     ContactComponent,
     AboutusComponent,
     LoginComponent,
+    CommentformDirective,
   ],
   imports: [
     BrowserModule,
@@ -73,6 +76,7 @@ import { BaseURL } from './shared/Baseurl';
     MatSlideToggleModule,
     HttpClientModule,
     MatProgressSpinnerModule,
+    MatSliderModule,
   ],
   entryComponents: [LoginComponent],
   providers: [

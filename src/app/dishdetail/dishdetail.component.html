@@ -50,17 +50,55 @@
     <h2>Comments</h2>
     <mat-list>
       <mat-list-item *ngFor="let comment of dish.comments">
-        <div fxLayout="column">
-          <div fxLayout="row wrap">
-            <p>{{ comment.comment }}</p>
+        <p mat-line>{{ comment.comment }}</p>
 
-            <p><strong> Rating:</strong>{{ comment.rating }}stars</p>
+        <p mat-line><strong> Rating:</strong>{{ comment.rating }}stars</p>
 
-            <p>--{{ comment.author }} {{ comment.date | date }}</p>
-          </div>
-        </div>
-        <br />
+        <p mat-line>--{{ comment.author }} {{ comment.date | date }}</p>
       </mat-list-item>
     </mat-list>
+    <div>
+      <form
+        [formGroup]="commentForm"
+        novalidate
+        id="comment-form"
+        (ngSubmit)="onSubmit()"
+        #fform="ngForm"
+      >
+        <p>{{ commentForm.value | json }}</p>
+        <mat-form-field>
+          <p>
+            <input
+              matInput
+              type="text"
+              name="author"
+              placeholder="Name"
+              formControlName="author"
+            />
+          </p>
+        </mat-form-field>
+        <p>
+          <mat-slider
+            min="1"
+            max="5"
+            step="1"
+            tickInterval="1"
+            formControlName="rating"
+          ></mat-slider>
+        </p>
+        <p>
+          <textarea
+            matInput
+            formControlName="comment"
+            placeholder="Your comment"
+          ></textarea>
+        </p>
+        <p>
+          <button mat-raised-button type="submit" color="primary">
+            Submit
+          </button>
+        </p>
+      </form>
+    </div>
   </div>
 </div>
