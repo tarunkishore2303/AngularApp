@@ -40,6 +40,7 @@ import { AboutusComponent } from './aboutus/aboutus.component';
 import { LoginComponent } from './login/login.component';
 import { BaseURL } from './shared/Baseurl';
 import { CommentformDirective } from './commentform.directive';
+import { HighlightDirective } from './directives/highlight.directive';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { CommentformDirective } from './commentform.directive';
     AboutusComponent,
     LoginComponent,
     CommentformDirective,
+    HighlightDirective,
   ],
   imports: [
     BrowserModule,

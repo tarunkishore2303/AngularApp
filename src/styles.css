@@ -10,6 +10,13 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
+.highlight {
+  background-color: #512da8;
+  border: 1px solid #ffc107;
+  z-index: 1;
+  transform: scale(1.01);
+}
+
 .container {
   display: flex;
   margin: 0px;
