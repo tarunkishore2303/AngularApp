@@ -69,7 +69,7 @@
   <div fxFlex>
     <h2>Corporate Leadership</h2>
     <mat-list>
-      <mat-list-item *ngFor="let leader of leaders">
+      <mat-list-item *ngFor="let leader of leaders" [@expand]>
         <img
           mat-list-icon
           src="{{ BaseURL + leader.image }}"

@@ -5,12 +5,18 @@ import { Promotion } from '../shared/promotion';
 import { PromotionService } from '../service/promotion.service';
 import { Leader } from '../shared/leader';
 import { LeaderService } from '../service/leader.service';
+import { flyInOut, expand } from '../animations/app.animation';
 import { BaseURL } from '../shared/baseurl';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
+  host: {
+    '[@flyInOut]': 'true',
+    style: 'display:block;',
+  },
+  animations: [flyInOut(), expand()],
 })
 export class HomeComponent implements OnInit {
   dish: Dish;
